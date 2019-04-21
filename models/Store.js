@@ -8,6 +8,16 @@ const StoreSchema = new Schema({
 		required: true
 	},
 	address: {
+		street: String,
+		number: Number,
+		city: {
+			type: String,
+			required: true
+		},
+		zipCode: {
+			type: String,
+			required: true
+		},
 		location: {
 			type: {
 				type: String,

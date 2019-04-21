@@ -2,14 +2,17 @@ const Store = require("../models/Store");
 
 module.exports = {
 	index: (req, res) => {
-		const { p } = req.query;
+		const { p, d } = req.query;
 		let coordinates;
 		if (p !== undefined) {
 			coordinates = p
 				.split(",")
 				.map(c => Number(c))
 				.reverse();
-			Store.findByCoordinates(coordinates, 500).exec((err, calc) => {
+			Store.findByCoordinates(
+				coordinates,
+				d !== undefined ? parseFloat(d) : 100
+			).exec((err, calc) => {
 				if (err) {
 					res.status(500).json({
 						error: err
