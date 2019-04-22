@@ -38,7 +38,6 @@ const StoreSchema = new Schema({
 StoreSchema.index({ "address.location": "2dsphere" });
 
 // On définit des méthodes statics propres au schéma
-
 // On récupère tous les stores
 StoreSchema.statics.findAll = function() {
 	return this.find({});
@@ -46,7 +45,6 @@ StoreSchema.statics.findAll = function() {
 
 // On récupère seulement les stores
 // les plus proches
-// avec un optionnel de maxDistance
 // pour faire des populate on rajoute des $lookup
 
 StoreSchema.statics.findByCoordinates = function(coordinates, maxDistance) {
